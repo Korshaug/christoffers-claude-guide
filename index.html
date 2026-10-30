@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christoffer's Claude guide</title>
+<meta name="description" content="Lær Claude Code fra bunnen av: åtte korte videoer, seks øvinger og en jukselapp. Skrevet for Windows, uten krav om programmering.">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#faf9f5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1917" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Christoffer's Claude guide">
+<meta property="og:description" content="Lær Claude Code fra bunnen av: åtte korte videoer, seks øvinger og en jukselapp.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://korshaug.github.io/christoffers-claude-guide/assets/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23cc785c'/%3E%3Ctext x='16' y='22.5' font-family='Georgia,serif' font-size='19' text-anchor='middle' fill='%23faf9f5'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/EBGaramond-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<script>
+  // Tema før første maling, så siden ikke blinker. Feiler stille uten lagring.
+  try { var t = localStorage.getItem("ccg-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<style>
+@font-face{font-family:'EB Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/EBGaramond-400i.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'EB Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/EBGaramond-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'EB Garamond';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/EBGaramond-500.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/Inter-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/Inter-500.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/Inter-600.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/JetBrainsMono-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/JetBrainsMono-500.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+/* Stil: awesome-design-md «claude» som grammatikk, samme uttrykk som videoserien. */
+:root{
+  --canvas:#faf9f5; --surface:#f5f0e8; --card:#efe9de; --card-strong:#e8e0d2;
+  --ink:#141413; --body:#3d3d3a; --muted:#64625c; --hair:#e6dfd8; --hair-soft:#ebe6df;
+  --accent:#cc785c; --accent-ink:#9c4f35; --on-accent:#fffdf8;
+  --code-bg:#181715; --code-ink:#faf9f5; --code-muted:#a09d96;
+  --kbd-bg:#fffdf8; --kbd-edge:#ddd3c4;
+  --ok:#2f7d4f;
+  --shadow:0 24px 48px -32px rgba(60,40,20,.35);
+  --serif:'EB Garamond',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  --header-h:64px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --canvas:#1a1917; --surface:#201f1c; --card:#262420; --card-strong:#2e2b27;
+    --ink:#f3f0e8; --body:#d3cfc5; --muted:#a39f96; --hair:#36332e; --hair-soft:#2c2a26;
+    --accent:#d98b6f; --accent-ink:#e8a184; --on-accent:#1a1917;
+    --code-bg:#121110; --code-ink:#f3f0e8; --code-muted:#9a968d;
+    --kbd-bg:#2a2824; --kbd-edge:#11100e; --ok:#7ccf98;
+    --shadow:0 24px 48px -28px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --canvas:#1a1917; --surface:#201f1c; --card:#262420; --card-strong:#2e2b27;
+  --ink:#f3f0e8; --body:#d3cfc5; --muted:#a39f96; --hair:#36332e; --hair-soft:#2c2a26;
+  --accent:#d98b6f; --accent-ink:#e8a184; --on-accent:#1a1917;
+  --code-bg:#121110; --code-ink:#f3f0e8; --code-muted:#9a968d;
+  --kbd-bg:#2a2824; --kbd-edge:#11100e; --ok:#7ccf98;
+  --shadow:0 24px 48px -28px rgba(0,0,0,.6);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 20px);-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--canvas);color:var(--body);font:400 17px/1.65 var(--sans);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+img,video{max-width:100%;display:block}
+a{color:var(--accent-ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{color:var(--ink);font-family:var(--serif);font-weight:400;letter-spacing:-.015em;margin:0;text-wrap:balance}
+h3{font-family:var(--sans);font-weight:600;font-size:1.05rem;letter-spacing:0}
+p{margin:0;text-wrap:pretty}
+code,kbd,pre{font-family:var(--mono)}
+:not(pre)>code{font-size:.88em;background:var(--card);color:var(--ink);padding:.12em .4em;border-radius:6px;white-space:nowrap}
+.skip{position:absolute;left:16px;top:-48px;background:var(--ink);color:var(--canvas);padding:8px 14px;border-radius:var(--r-sm);z-index:30}
+.skip:focus{top:12px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* topp */
+.top{position:sticky;top:0;z-index:20;height:var(--header-h);background:color-mix(in srgb,var(--canvas) 86%,transparent);backdrop-filter:saturate(160%) blur(10px);-webkit-backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s ease}
+.top.scrolled{border-bottom-color:var(--hair)}
+.top .wrap{height:100%;display:flex;align-items:center;gap:24px}
+.brand{font-family:var(--serif);font-size:1.32rem;color:var(--ink);text-decoration:none;letter-spacing:-.01em;white-space:nowrap}
+.brand span{color:var(--accent)}
+.nav{margin-left:auto;display:flex;align-items:center;gap:4px}
+.nav a{color:var(--body);text-decoration:none;font-size:.92rem;font-weight:500;padding:8px 12px;border-radius:var(--r-sm)}
+.nav a:hover{background:var(--card);color:var(--ink)}
+.icon-btn{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--hair);background:transparent;color:var(--ink);border-radius:var(--r-sm);cursor:pointer;font-size:18px;transition:transform 160ms var(--ease-out),background .2s ease}
+.icon-btn:hover{background:var(--card)}
+.icon-btn:active{transform:scale(.96)}
+@media (max-width:860px){.nav a{display:none}.nav{margin-left:auto}}
+
+/* hero */
+.hero{padding:56px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,1.6rem + 3.6vw,4.4rem);line-height:1.02;letter-spacing:-.025em}
+.hero .sub{margin-top:22px;font-size:1.18rem;line-height:1.55;max-width:34ch;color:var(--body)}
+.ctas{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:var(--r-sm);font:500 1rem var(--sans);text-decoration:none;white-space:nowrap;transition:transform 160ms var(--ease-out),background .2s ease,border-color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-primary:hover{background:var(--accent-ink);color:var(--on-accent)}
+:root:not([data-theme="dark"]) .btn-primary{background:#a9583e}
+:root:not([data-theme="dark"]) .btn-primary:hover{background:#8f4a33}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn-primary{background:var(--accent)}:root:not([data-theme="light"]) .btn-primary:hover{background:var(--accent-ink)}}
+.btn-ghost{border:1px solid var(--hair);color:var(--ink);background:transparent}
+.btn-ghost:hover{background:var(--card)}
+.hero-meta{margin-top:28px;font-size:.9rem;color:var(--muted)}
+.film{margin:0}
+.film .frame{border-radius:var(--r-lg);overflow:hidden;background:var(--code-bg);box-shadow:var(--shadow)}
+.film video{width:100%;height:auto;aspect-ratio:16/9;background:var(--card)}
+.film figcaption{margin-top:10px;font-size:.86rem;color:var(--muted);display:flex;gap:10px;align-items:center}
+.film figcaption i{font-size:1rem}
+@media (max-width:900px){.hero{padding:32px 0 56px}.hero .wrap{grid-template-columns:1fr;gap:36px}}
+
+/* innhold med meny */
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:64px;padding-bottom:96px}
+.toc{position:sticky;top:calc(var(--header-h) + 28px);align-self:start;max-height:calc(100dvh - var(--header-h) - 56px);overflow:auto}
+.toc p{font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:10px}
+.toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--hair)}
+.toc a{display:flex;gap:10px;padding:7px 0 7px 16px;margin-left:-1px;border-left:2px solid transparent;color:var(--muted);text-decoration:none;font-size:.93rem;line-height:1.35;transition:color .15s ease,border-color .15s ease}
+.toc a .n{font-family:var(--serif);font-size:1.05rem;width:1.1em;color:inherit}
+.toc a:hover{color:var(--ink)}
+.toc a[aria-current="true"]{color:var(--ink);border-left-color:var(--accent);font-weight:500}
+.toc-mobile{display:none;margin-bottom:40px;border:1px solid var(--hair);border-radius:var(--r-md);background:var(--surface)}
+.toc-mobile summary{cursor:pointer;padding:14px 18px;font-weight:500;color:var(--ink);list-style:none;display:flex;justify-content:space-between;align-items:center}
+.toc-mobile summary::-webkit-details-marker{display:none}
+.toc-mobile[open] summary i{transform:rotate(180deg)}
+.toc-mobile summary i{transition:transform .2s var(--ease-out)}
+.toc-mobile ol{margin:0;padding:0 18px 14px 40px}
+.toc-mobile li{padding:5px 0}
+.toc-mobile a{color:var(--body);text-decoration:none}
+@media (max-width:1000px){.layout{grid-template-columns:1fr}.toc{display:none}.toc-mobile{display:block}}
+
+article{max-width:740px;min-width:0}
+.part{padding-top:72px}
+.part:first-child{padding-top:8px}
+.part h2{font-size:clamp(2rem,1.5rem + 1.6vw,2.7rem);line-height:1.08;display:flex;gap:.45em;align-items:baseline}
+.part h2 .n{color:var(--accent);font-style:italic}
+.part .lead{margin-top:16px;font-size:1.12rem;color:var(--body);max-width:62ch}
+.part > .film{margin-top:32px}
+.block{margin-top:40px}
+.block > h3{margin-bottom:14px}
+.prose p + p{margin-top:12px}
+.note{margin-top:28px;background:var(--surface);border-radius:var(--r-md);padding:20px 24px;color:var(--body)}
+.note strong{color:var(--ink)}
+
+/* del 1: løkka */
+.loop{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;counter-reset:s}
+.loop li{position:relative;background:var(--card);border-radius:var(--r-md);padding:16px 14px 18px;counter-increment:s}
+.loop li::before{content:counter(s);font-family:var(--serif);font-size:1.6rem;line-height:1;color:var(--accent-ink);display:block;margin-bottom:10px}
+.loop li b{display:block;color:var(--ink);font-weight:600;font-size:.98rem;line-height:1.3}
+.loop li span{display:block;margin-top:6px;font-size:.88rem;line-height:1.45;color:var(--muted)}
+.loop li.gate{background:var(--accent);}
+.loop li.gate::before,.loop li.gate b,.loop li.gate span{color:var(--on-accent)}
+:root:not([data-theme="dark"]) .loop li.gate{background:#a9583e}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .loop li.gate{background:var(--accent)}}
+.loop-foot{margin-top:14px;font-size:.95rem;color:var(--muted);display:flex;gap:10px;align-items:flex-start}
+.loop-foot i{font-size:1.15rem;color:var(--accent);margin-top:3px}
+@media (max-width:760px){.loop{grid-template-columns:1fr 1fr}.loop li:last-child{grid-column:1/-1}}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:28px 36px;margin:0}
+.facts dt{color:var(--ink);font-weight:600}
+.facts dd{margin:6px 0 0;font-size:.98rem}
+@media (max-width:640px){.facts{grid-template-columns:1fr;gap:20px}}
+
+/* del 2: steg og kode */
+.steps{list-style:none;margin:0;padding:0;counter-reset:st}
+.steps > li{counter-increment:st;display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 16px;padding:22px 0;border-top:1px solid var(--hair-soft)}
+.steps > li:first-child{border-top:0;padding-top:4px}
+.steps > li::before{content:counter(st);grid-row:span 3;width:36px;height:36px;border-radius:50%;border:1px solid var(--hair);display:grid;place-items:center;font-family:var(--serif);font-size:1.2rem;color:var(--ink);background:var(--canvas)}
+.steps b{color:var(--ink);font-weight:600}
+.steps .code{margin-top:12px}
+.code{position:relative;background:var(--code-bg);border-radius:var(--r-md);color:var(--code-ink)}
+.code pre{margin:0;padding:16px 112px 16px 18px;overflow-x:auto;font-size:.9rem;line-height:1.7}
+.code .pr{color:var(--code-muted);user-select:none}
+.copy{position:absolute;top:9px;right:9px;height:34px;padding:0 12px;display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(250,249,245,.18);background:rgba(250,249,245,.06);color:var(--code-ink);border-radius:var(--r-sm);font:500 .82rem var(--sans);cursor:pointer;transition:transform 140ms var(--ease-out),background .2s ease}
+.copy:hover{background:rgba(250,249,245,.13)}
+.copy:active{transform:scale(.96)}
+.copy.done{border-color:rgba(124,207,152,.5);color:#9ee2b5}
+.copy.fail{border-color:rgba(232,161,132,.6)}
+
+/* del 3: taster */
+.keys{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.keys li{display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:center;padding:18px 20px;background:var(--surface);border-radius:var(--r-md)}
+.keys .cap{display:flex;gap:6px;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:.9rem}
+kbd{display:inline-flex;align-items:center;justify-content:center;min-width:1.9em;height:1.6em;padding:0 .45em;font:500 .8em/1 var(--sans);color:var(--ink);background:var(--kbd-bg);border:1px solid var(--hair);border-radius:6px;box-shadow:0 2px 0 var(--kbd-edge);white-space:nowrap;vertical-align:.1em}
+.keys .cap kbd,.sheet dt kbd{height:34px;min-width:2.2em;padding:0 10px;font-size:.86rem;border-radius:8px;box-shadow:0 3px 0 var(--kbd-edge);vertical-align:baseline}
+.keys b{display:block;color:var(--ink);font-weight:600}
+.keys p{font-size:.96rem;margin-top:3px}
+@media (max-width:640px){.keys li{grid-template-columns:1fr;gap:10px}}
+
+/* del 4: verktøy i grupper */
+.groups{display:grid;gap:40px}
+.group h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin-bottom:6px}
+.group > p{color:var(--muted);font-size:.96rem;margin-bottom:16px}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tool{background:var(--card);border-radius:var(--r-md);padding:18px 20px}
+.tool b{color:var(--ink);font-weight:600;display:block}
+.tool p{font-size:.94rem;margin-top:6px;line-height:1.55}
+.tool .when{color:var(--muted)}
+.tool .how{margin-top:12px;font-size:.88rem}
+.tool code{background:var(--canvas)}
+.tools > .tool:last-child:nth-child(odd){grid-column:1/-1}
+@media (max-width:640px){.tools{grid-template-columns:1fr}}
+
+/* del 5: før og etter */
+.pairs{display:grid;gap:14px}
+.pair{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,5fr);border:1px solid var(--hair);border-radius:var(--r-md);overflow:hidden}
+.pair .bad,.pair .good{padding:16px 20px;font-family:var(--mono);font-size:.88rem;line-height:1.6}
+.pair .bad{background:var(--surface);color:var(--muted);text-decoration:line-through;text-decoration-color:var(--accent);text-decoration-thickness:2px}
+.pair .good{color:var(--ink)}
+.pair small{display:block;font-family:var(--sans);font-size:.74rem;font-weight:600;color:var(--muted);text-decoration:none;margin-bottom:6px;letter-spacing:.01em}
+@media (max-width:640px){.pair{grid-template-columns:1fr}}
+.habits{display:grid;grid-template-columns:1fr 1fr;gap:26px 36px;margin-top:8px}
+.habits b{color:var(--ink);font-weight:600;display:block;margin-bottom:4px}
+.habits p{font-size:.96rem}
+@media (max-width:640px){.habits{grid-template-columns:1fr;gap:20px}}
+
+/* del 6: øvinger */
+.progress{display:flex;align-items:center;gap:14px;margin-bottom:18px;font-size:.95rem;color:var(--muted)}
+.bar{flex:1;height:6px;border-radius:99px;background:var(--card);overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .35s var(--ease-out)}
+.tasks{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.task label{display:grid;grid-template-columns:28px minmax(0,1fr);gap:16px;padding:18px 20px;border:1px solid var(--hair);border-radius:var(--r-md);cursor:pointer;transition:background .2s ease,border-color .2s ease}
+.task label:hover{background:var(--surface)}
+.task input{appearance:none;-webkit-appearance:none;margin:2px 0 0;width:26px;height:26px;border:2px solid var(--muted);border-radius:7px;display:grid;place-items:center;cursor:pointer;transition:background .15s ease,border-color .15s ease,transform 140ms var(--ease-out)}
+.task input:active{transform:scale(.92)}
+.task input::after{content:"";width:12px;height:7px;border:solid var(--on-accent);border-width:0 0 2.5px 2.5px;transform:rotate(-45deg) translate(1px,-1px) scale(.6);opacity:0;transition:opacity .15s ease,transform .2s var(--ease-out)}
+.task input:checked{background:var(--accent);border-color:var(--accent)}
+.task input:checked::after{opacity:1;transform:rotate(-45deg) translate(1px,-1px) scale(1)}
+.task b{color:var(--ink);font-weight:600}
+.task .skill{color:var(--muted);font-weight:400}
+.task p{font-size:.95rem;margin-top:6px}
+.task .ex{margin-top:10px;font-family:var(--mono);font-size:.84rem;color:var(--body)}
+.task:has(input:checked) label{background:var(--surface);border-color:transparent}
+.task:has(input:checked) b{text-decoration:line-through;text-decoration-color:var(--accent)}
+
+/* del 7: jukselapp */
+.sheet{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.sheet section{background:var(--surface);border-radius:var(--r-md);padding:20px}
+.sheet h3{font-family:var(--serif);font-weight:400;font-size:1.35rem;margin-bottom:14px}
+.sheet dl{margin:0;display:grid;gap:12px}
+.sheet dt{display:flex;flex-wrap:wrap;gap:6px}
+.sheet dt code{font-size:.84rem}
+.sheet dd{margin:4px 0 0;font-size:.9rem;color:var(--body)}
+@media (max-width:900px){.sheet{grid-template-columns:1fr}}
+
+/* del 8: regler */
+.rules{list-style:none;margin:0;padding:0;counter-reset:r;display:grid;gap:4px}
+.rules li{counter-increment:r;display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;padding:16px 0}
+.rules li::before{content:counter(r);font-family:var(--serif);font-size:2rem;line-height:1;color:var(--accent);font-style:italic}
+.rules b{color:var(--ink);font-weight:600}
+
+/* videoer */
+.vids{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.vid{display:grid;grid-template-columns:184px minmax(0,1fr);gap:20px;padding:14px;border-radius:var(--r-md);text-decoration:none;color:inherit;transition:background .2s ease}
+.vid:hover{background:var(--surface)}
+.vid .thumb{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:16/9;background:var(--card)}
+.vid .thumb img{width:100%;height:100%;object-fit:cover}
+.vid .thumb .len{position:absolute;right:6px;bottom:6px;background:rgba(20,20,19,.82);color:#faf9f5;font:500 .74rem var(--sans);padding:2px 6px;border-radius:5px}
+.vid .t{color:var(--ink);font-weight:600;line-height:1.35;display:flex;gap:8px;align-items:baseline}
+.vid .t .o{font-family:var(--serif);font-weight:400;font-size:1.15rem;color:var(--accent-ink)}
+.vid .by{font-size:.86rem;color:var(--muted);margin-top:2px}
+.vid p{font-size:.94rem;margin-top:8px}
+.vid .fit{font-size:.84rem;color:var(--muted);margin-top:6px}
+@media (max-width:560px){.vid{grid-template-columns:1fr;gap:12px;padding:12px 0}}
+.more{margin-top:28px;padding:0;list-style:none;display:grid;gap:10px}
+.more li{padding-left:22px;position:relative}
+.more li::before{content:"";position:absolute;left:4px;top:.72em;width:8px;height:1.5px;background:var(--accent)}
+
+.sources{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 28px}
+@media (max-width:640px){.sources{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--hair);padding:36px 0 48px;font-size:.9rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+/* inngang: én samlet sideinnlasting, ikke fade på alt */
+@media (prefers-reduced-motion: no-preference){
+  .hero h1,.hero .sub,.hero .ctas,.hero .hero-meta,.hero .film{animation:rise .7s var(--ease-out) both}
+  .hero .sub{animation-delay:.06s}.hero .ctas{animation-delay:.12s}.hero .hero-meta{animation-delay:.18s}.hero .film{animation-delay:.1s;animation-duration:.9s}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+}
+@media print{
+  .top,.toc,.toc-mobile,.film,.copy,.ctas,footer,.vid .thumb{display:none!important}
+  body{background:#fff;color:#000}
+  .layout{display:block}
+  .part{break-inside:avoid-page}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#innhold">Hopp til innholdet</a>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#">Christoffer's <span>Claude</span> guide</a>
+    <nav class="nav" aria-label="Hovedmeny">
+      <a href="#del-2">Installere</a>
+      <a href="#del-3">Første økt</a>
+      <a href="#del-6">Øvinger</a>
+      <a href="#del-7">Jukselapp</a>
+      <a href="#videoer">YouTube</a>
+      <button class="icon-btn" id="theme" type="button" aria-label="Bytt mellom lyst og mørkt tema"><i class="ph ph-moon" aria-hidden="true"></i></button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="tittel">
+  <div class="wrap">
+    <div>
+      <h1 id="tittel">Lær Claude Code fra bunnen av</h1>
+      <p class="sub">Åtte korte videoer, seks øvinger og en jukselapp. Skrevet for Windows, uten krav om programmering.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#del-1">Start med del 1 <i class="ph ph-arrow-down" aria-hidden="true"></i></a>
+        <a class="btn btn-ghost" href="#del-6">Gå til øvingene</a>
+      </div>
+      <p class="hero-meta">Sjekket mot den offisielle dokumentasjonen 30. oktober 2026.</p>
+    </div>
+    <figure class="film">
+      <div class="frame">
+        <video controls preload="metadata" playsinline width="1920" height="1080" poster="assets/poster/01.jpg" aria-label="Video: Slik fungerer det">
+          <source src="assets/video/01-slik-fungerer-det.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption><i class="ph ph-speaker-slash" aria-hidden="true"></i>Del 1, 0:57. Videoene har ingen lyd, all tekst står på skjermen.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="wrap layout" id="innhold">
+  <nav class="toc" aria-label="Innhold">
+    <p>Innhold</p>
+    <ol>
+      <li><a href="#del-1"><span class="n">1</span>Slik fungerer det</a></li>
+      <li><a href="#del-2"><span class="n">2</span>Installere på Windows</a></li>
+      <li><a href="#del-3"><span class="n">3</span>Første økt</a></li>
+      <li><a href="#del-4"><span class="n">4</span>Gjør det til ditt eget</a></li>
+      <li><a href="#del-5"><span class="n">5</span>Gode vaner</a></li>
+      <li><a href="#del-6"><span class="n">6</span>Øvingsoppgaver</a></li>
+      <li><a href="#del-7"><span class="n">7</span>Jukselapp</a></li>
+      <li><a href="#del-8"><span class="n">8</span>Trygghet</a></li>
+      <li><a href="#videoer"><span class="n">9</span>Videoer på YouTube</a></li>
+    </ol>
+  </nav>
+
+  <article>
+    <details class="toc-mobile">
+      <summary>Innhold <i class="ph ph-caret-down" aria-hidden="true"></i></summary>
+      <ol>
+        <li><a href="#del-1">Slik fungerer det</a></li>
+        <li><a href="#del-2">Installere på Windows</a></li>
+        <li><a href="#del-3">Første økt</a></li>
+        <li><a href="#del-4">Gjør det til ditt eget</a></li>
+        <li><a href="#del-5">Gode vaner</a></li>
+        <li><a href="#del-6">Øvingsoppgaver</a></li>
+        <li><a href="#del-7">Jukselapp</a></li>
+        <li><a href="#del-8">Trygghet</a></li>
+        <li><a href="#videoer">Videoer på YouTube</a></li>
+      </ol>
+    </details>
+
+    <!-- 1 -->
+    <section class="part" id="del-1" aria-labelledby="h1-1">
+      <h2 id="h1-1"><span class="n">1</span>Slik fungerer det</h2>
+      <p class="lead">Claude Code er språkmodellen Claude koblet til verktøy på PC-en din. Den kan lese og endre filer, kjøre kommandoer og søke på nettet. Du gir et mål, og Claude jobber i en løkke til målet er nådd eller den trenger deg.</p>
+
+      <div class="block">
+        <ol class="loop" aria-label="Arbeidsløkka">
+          <li><b>Du gir et mål</b><span>Hva du vil ha, og hvordan «ferdig» ser ut</span></li>
+          <li><b>Claude leser</b><span>Filer i mappen, CLAUDE.md og samtalen så langt</span></li>
+          <li class="gate"><b>Claude handler</b><span>Endrer filer og kjører kommandoer. Spør deg først i Manuell modus</span></li>
+          <li><b>Claude sjekker</b><span>Feilmeldinger, tester, skjermbilder</span></li>
+          <li><b>Claude svarer deg</b><span>Hva som ble gjort, og hva som gjenstår</span></li>
+        </ol>
+        <p class="loop-foot"><i class="ph ph-arrow-counter-clockwise" aria-hidden="true"></i><span>Er ikke jobben ferdig etter steg 4, går Claude tilbake til steg 2. Står den fast, spør den deg. Du kan stoppe den når som helst med <kbd>Esc</kbd>.</span></p>
+      </div>
+
+      <div class="block">
+        <dl class="facts">
+          <div><dt>Mappen er prosjektet</dt><dd>Claude Code jobber i mappen du starter den i. Bruk én mappe per prosjekt.</dd></div>
+          <div><dt>Samtalen er arbeidsminnet</dt><dd>Alt du skriver og alt Claude leser, sendes på nytt med hver melding. Mange ulike oppgaver i én samtale gjør den både dyrere og dårligere.</dd></div>
+          <div><dt>Hver økt starter blankt</dt><dd>Claude husker ikke forrige samtale av seg selv. Det som skal huskes, skriver du i CLAUDE.md (del 4).</dd></div>
+          <div><dt>Tillatelser styrer resten</dt><dd>Nye økter starter i auto-modus, der en kontrollmodell stopper risikable handlinger. Mens du lærer, bruker du Manuell modus (del 3).</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="part" id="del-2" aria-labelledby="h1-2">
+      <h2 id="h1-2"><span class="n">2</span>Installere på Windows</h2>
+      <p class="lead">Installasjonen krever ikke administratorrettigheter. Du trenger Windows 10 versjon 1809 eller nyere og 4 GB RAM.</p>
+      <figure class="film">
+        <div class="frame"><video controls preload="metadata" playsinline width="1920" height="1080" poster="assets/poster/02.jpg" aria-label="Video: Installere på Windows"><source src="assets/video/02-installere-pa-windows.mp4" type="video/mp4"></video></div>
+        <figcaption>Video, 0:56</figcaption>
+      </figure>
+      <div class="block">
+        <ol class="steps">
+          <li><b>Skaff abonnement.</b><p>Claude Code krever en betalt Claude-konto (Pro, Max, Team eller Enterprise). Gratisplanen gir ikke tilgang. Pro holder til å begynne med.</p></li>
+          <li><b>Installer Git for Windows.</b><p>Last ned fra <a href="https://git-scm.com/downloads/win">git-scm.com/downloads/win</a>. Det er valgfritt, men gir Claude et bedre kommandoverktøy og deg muligheten til å lagre versjoner av filene. Standardvalgene holder.</p></li>
+          <li><b>Installer Windows Terminal</b><p>fra Microsoft Store. Da fungerer <kbd>Shift</kbd> + <kbd>Enter</kbd> for ny linje i meldingene dine.</p></li>
+          <li><b>Åpne PowerShell og lim inn denne linjen.</b><p>Linjen skal starte med <code>PS C:\</code>. Installasjonen viser ingen fremdrift, så vent til du får en ny linje.</p>
+            <div class="code"><pre><code>irm https://claude.ai/install.ps1 | iex</code></pre><button class="copy" type="button"><i class="ph ph-copy" aria-hidden="true"></i><span>Kopier</span></button></div></li>
+          <li><b>Sjekk installasjonen.</b><p>Lukk vinduet, åpne et nytt og skriv kommandoen under. Du skal få et versjonsnummer tilbake. <code>claude doctor</code> gir en full sjekk.</p>
+            <div class="code"><pre><code>claude --version</code></pre><button class="copy" type="button"><i class="ph ph-copy" aria-hidden="true"></i><span>Kopier</span></button></div></li>
+          <li><b>Lag en prosjektmappe og start.</b><p>Første gang åpnes nettleseren, og du logger inn med Claude-kontoen din.</p>
+            <div class="code"><pre><code>mkdir $HOME\Documents\Claude\test
+cd $HOME\Documents\Claude\test
+claude</code></pre><button class="copy" type="button"><i class="ph ph-copy" aria-hidden="true"></i><span>Kopier</span></button></div></li>
+        </ol>
+        <p class="note">Claude Code oppdaterer seg selv. Liker du ikke terminalen, finnes Claude Code også i Claude-appen for Windows (<a href="https://claude.com/download">claude.com/download</a>). Guiden bruker terminalen fordi du ser mer av hva som skjer der.</p>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="part" id="del-3" aria-labelledby="h1-3">
+      <h2 id="h1-3"><span class="n">3</span>Første økt</h2>
+      <p class="lead">Disse fem tingene holder for å jobbe trygt på egen hånd. Ta gjerne første økt sammen med noen som kan Claude Code.</p>
+      <figure class="film">
+        <div class="frame"><video controls preload="metadata" playsinline width="1920" height="1080" poster="assets/poster/03.jpg" aria-label="Video: Første økt"><source src="assets/video/03-forste-okt.mp4" type="video/mp4"></video></div>
+        <figcaption>Video, 1:04</figcaption>
+      </figure>
+      <div class="block">
+        <ul class="keys">
+          <li><span class="cap"><kbd>Shift</kbd>+<kbd>Tab</kbd></span><div><b>Bytt til Manuell modus</b><p>Trykk én gang etter at du har startet <code>claude</code>. Nå spør Claude før den endrer filer eller kjører kommandoer, og du ser hvert steg.</p></div></li>
+          <li><span class="cap"><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd></span><div><b>Les før du svarer</b><p>Du kan godkjenne, godkjenne og slippe å bli spurt igjen om samme type handling, eller si nei og forklare hva du vil i stedet.</p></div></li>
+          <li><span class="cap"><kbd>Esc</kbd></span><div><b>Stopp Claude</b><p>Det som er gjort, blir stående, og du kan styre i en ny retning.</p></div></li>
+          <li><span class="cap"><kbd>Esc</kbd><kbd>Esc</kbd></span><div><b>Spol tilbake</b><p>På en tom linje åpner dette (eller <code>/rewind</code>) en meny der du ruller filene, samtalen eller begge tilbake. Det gjelder bare filer Claude endret selv, ikke det en kommando gjorde.</p></div></li>
+          <li><span class="cap"><code>/clear</code></span><div><b>Blank samtale mellom oppgaver</b><p>Ny oppgave betyr ny samtale. Det gir bedre svar og bruker mindre av abonnementet.</p></div></li>
+        </ul>
+        <p class="note">Du kan spørre Claude om hvordan Claude Code virker, for eksempel «hvordan legger jeg til en tillatelsesregel?». Avslutt med <kbd>Ctrl</kbd>+<kbd>C</kbd> to ganger, og fortsett forrige samtale i samme mappe med <code>claude --continue</code>.</p>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="part" id="del-4" aria-labelledby="h1-4">
+      <h2 id="h1-4"><span class="n">4</span>Gjør det til ditt eget</h2>
+      <p class="lead">Standardoppsettet fungerer fra første dag. Verktøyene under tar du i bruk når du merker et konkret behov, i den rekkefølgen de står.</p>
+      <figure class="film">
+        <div class="frame"><video controls preload="metadata" playsinline width="1920" height="1080" poster="assets/poster/04.jpg" aria-label="Video: Gjør det til ditt eget"><source src="assets/video/04-gjor-det-til-ditt-eget.mp4" type="video/mp4"></video></div>
+        <figcaption>Video, 1:07</figcaption>
+      </figure>
+      <div class="block groups">
+        <div class="group">
+          <h3>Styr arbeidet</h3>
+          <p>Hvordan Claude jobber, og hva den får lov til.</p>
+          <div class="tools">
+            <div class="tool"><b>Planmodus</b><p>Claude undersøker og legger fram en plan, men endrer ingenting før du godkjenner.</p><p class="when">Når oppgaven berører flere filer, eller du er usikker.</p><p class="how"><kbd>Shift</kbd>+<kbd>Tab</kbd> til plan, eller <code>/plan</code></p></div>
+            <div class="tool"><b>Tillatelsesmodus</b><p>Manuell, acceptEdits, plan eller auto: hva Claude får gjøre uten å spørre.</p><p class="when">Når du stoler på arbeidsflyten og blir lei av å godkjenne.</p><p class="how"><kbd>Shift</kbd>+<kbd>Tab</kbd></p></div>
+            <div class="tool"><b>Tillatelsesregler</b><p>Faste ja og nei til bestemte handlinger. Et nei gjelder i alle moduser.</p><p class="when">Når noe alltid skal være lov, eller aldri skje.</p><p class="how"><code>/permissions</code></p></div>
+            <div class="tool"><b>Modell og innsats</b><p>Hvilken Claude-modell som jobber, og hvor grundig den tenker.</p><p class="when">Store oppgaver trenger mer, enkle oppgaver mindre.</p><p class="how"><code>/model</code> og <code>/effort</code></p></div>
+          </div>
+        </div>
+        <div class="group">
+          <h3>Gi Claude hukommelse</h3>
+          <p>Det Claude skal vite hver gang, uten at du forklarer på nytt.</p>
+          <div class="tools">
+            <div class="tool"><b>CLAUDE.md</b><p>En tekstfil Claude leser ved starten av hver økt i prosjektet. Hold den under 200 linjer.</p><p class="when">Når du forklarer det samme for andre gang, eller Claude gjør samme feil to ganger.</p><p class="how"><code>/init</code> lager et utkast</p></div>
+            <div class="tool"><b>Personlig CLAUDE.md</b><p>Det samme, men for alle prosjektene dine: språk, mappestruktur og hvordan du vil ha svar.</p><p class="when">Når du har vaner som gjelder overalt.</p><p class="how"><code>C:\Users\&lt;navn&gt;\.claude\CLAUDE.md</code></p></div>
+            <div class="tool"><b>Auto-minne</b><p>Notater Claude skriver selv når du retter den. Er på som standard.</p><p class="when">Se gjennom innimellom.</p><p class="how"><code>/memory</code> viser, redigerer og slår av</p></div>
+          </div>
+        </div>
+        <div class="group">
+          <h3>Utvid Claude</h3>
+          <p>Oppskrifter, tilkoblinger og faste regler.</p>
+          <div class="tools">
+            <div class="tool"><b>Skills</b><p>En oppskrift Claude følger for en bestemt type oppgave, lagret som en mappe med filen SKILL.md.</p><p class="when">Når du gjør samme type jobb igjen og igjen.</p><p class="how">«lag en skill av det vi nettopp gjorde», <code>/skills</code></p></div>
+            <div class="tool"><b>MCP-tilkoblinger</b><p>Kobler Claude til andre tjenester og programmer.</p><p class="when">Når Claude trenger data fra et sted utenfor PC-en.</p><p class="how"><code>/mcp</code></p></div>
+            <div class="tool"><b>Hooks</b><p>Regler Claude Code alltid kjører, for eksempel før hver kommando.</p><p class="when">Når en regel må holde hver gang. For viderekomne.</p><p class="how"><code>/hooks</code></p></div>
+            <div class="tool"><b>Plugins</b><p>Ferdige pakker med skills, hooks og tilkoblinger.</p><p class="when">Når noen allerede har laget det du trenger.</p><p class="how"><code>/plugin</code></p></div>
+          </div>
+        </div>
+      </div>
+      <p class="note"><strong>Ett skille er verdt å huske.</strong> CLAUDE.md og skills er råd som Claude vurderer, mens tillatelsesregler og hooks blir håndhevet hver gang. Det som aldri må skje, legger du derfor i en regel. Hold øye med forbruket med <code>/usage</code>, se hva som fyller samtalen med <code>/context</code>, og kort den ned med <code>/compact</code>.</p>
+    </section>
+
+    <!-- 5 -->
+    <section class="part" id="del-5" aria-labelledby="h1-5">
+      <h2 id="h1-5"><span class="n">5</span>Gode vaner</h2>
+      <p class="lead">De fleste dårlige resultater kommer av at Claude mangler noe bare du vet: hva du egentlig ville ha, eller hvordan den kan sjekke at jobben er gjort.</p>
+      <figure class="film">
+        <div class="frame"><video controls preload="metadata" playsinline width="1920" height="1080" poster="assets/poster/05.jpg" aria-label="Video: Gode vaner"><source src="assets/video/05-gode-vaner.mp4" type="video/mp4"></video></div>
+        <figcaption>Video, 1:03</figcaption>
+      </figure>
+      <div class="block">
+        <h3>Si hva «ferdig» betyr</h3>
+        <div class="pairs">
+          <div class="pair"><div class="bad"><small>I stedet for</small>rydd i bildene</div><div class="good"><small>Prøv</small>gi bildene i denne mappen navn etter datoen de ble tatt, og sorter dem i én mappe per måned. Vis meg planen først</div></div>
+          <div class="pair"><div class="bad"><small>I stedet for</small>lag en nettside</div><div class="good"><small>Prøv</small>lag en enkel nettside om hytta i én HTML-fil, med bilder fra mappen bilder og en kort tekst under hvert bilde</div></div>
+          <div class="pair"><div class="bad"><small>I stedet for</small>fiks feilen</div><div class="good"><small>Prøv</small>skriptet stopper med denne feilmeldingen når filen er tom: [lim inn]. Finn årsaken og sørg for at det håndterer tomme filer</div></div>
+        </div>
+      </div>
+      <div class="block habits">
+        <div><b>Gi Claude noe å sjekke mot</b><p>Be den kontrollregne en sum, åpne siden og ta et skjermbilde, eller sammenligne med en eksempelfil.</p></div>
+        <div><b>Gi den det du har</b><p>Skriv <code>@</code> og filnavnet for å peke på en fil. Lim inn et skjermbilde med <kbd>Alt</kbd>+<kbd>V</kbd>, og feilmeldinger slik de står.</p></div>
+        <div><b>La Claude intervjue deg</b><p>«Still meg spørsmål til du kan skrive en beskrivelse, og lagre den i PLAN.md.» Start så en ny samtale som bygger fra PLAN.md.</p></div>
+        <div><b>Si «vær ambisiøs»</b><p>Ellers lager Claude ofte den minste versjonen som løser oppgaven.</p></div>
+        <div><b>Følg med det første minuttet</b><p>Trykk <kbd>Esc</kbd> med en gang Claude går feil vei. Etter to mislykkede rettelser: <code>/clear</code> og en bedre melding.</p></div>
+        <div><b>Gi lange jobber et navn</b><p><code>/rename hytteside</code> i samtalen, og <code>claude --resume hytteside</code> neste dag.</p></div>
+      </div>
+      <p class="note"><strong>Dette trenger du ikke:</strong> «tenk grundig», STORE BOKSTAVER eller «ikke gi deg». Grundigheten styrer du med <code>/effort</code>, og regler som må holde, legger du i <code>/permissions</code> eller en hook.</p>
+    </section>
+
+    <!-- 6 -->
+    <section class="part" id="del-6" aria-labelledby="h1-6">
+      <h2 id="h1-6"><span class="n">6</span>Øvingsoppgaver</h2>
+      <p class="lead">Ta én oppgave om gangen, i hver sin mappe under <code>Documents\Claude</code>. Hver oppgave trener én ny ferdighet. Avkryssingen huskes i denne nettleseren.</p>
+      <figure class="film">
+        <div class="frame"><video controls preload="metadata" playsinline width="1920" height="1080" poster="assets/poster/06.jpg" aria-label="Video: Øvingsoppgaver"><source src="assets/video/06-ovingsoppgaver.mp4" type="video/mp4"></video></div>
+        <figcaption>Video, 0:45</figcaption>
+      </figure>
+      <div class="block">
+        <div class="progress"><span id="prog-text" aria-live="polite">0 av 6 ferdig</span><span class="bar" aria-hidden="true"><span id="prog-bar"></span></span></div>
+        <ul class="tasks">
+          <li class="task"><label><input type="checkbox" data-key="ov1"><div><b>Første kontakt</b> <span class="skill">Manuell modus</span><p>Se hvordan godkjenningen fungerer, og si nei én gang for å se hva som skjer.</p><p class="ex">«Hva kan du gjøre i denne mappen? Lag en fil som heter tips.txt med tre råd om Claude Code.»</p></div></label></li>
+          <li class="task"><label><input type="checkbox" data-key="ov2"><div><b>Rydde filer</b> <span class="skill">Planmodus og tilbakespoling</span><p>Kopier 20-30 bilder til en testmappe. Be om planen først, spol tilbake med <kbd>Esc</kbd><kbd>Esc</kbd> og prøv en annen sortering.</p><p class="ex">«Gi bildene navn etter dato og sorter dem per måned. Vis meg planen først.»</p></div></label></li>
+          <li class="task"><label><input type="checkbox" data-key="ov3"><div><b>En nettside</b> <span class="skill">Jobbe i runder</span><p>Gjør tre runder med endringer, og lim inn et skjermbilde med <kbd>Alt</kbd>+<kbd>V</kbd> for å vise hva du vil ha annerledes.</p><p class="ex">«Lag en enkel nettside om hobbyen min i én HTML-fil, og åpne den.»</p></div></label></li>
+          <li class="task"><label><input type="checkbox" data-key="ov4"><div><b>Data</b> <span class="skill">Peke på filer og kontrollere</span><p>Bruk en ufarlig regnearkfil, for eksempel strømforbruk eksportert fra nettselskapet. Be Claude kontrollregne én av summene.</p><p class="ex">«Se på @strøm-2026.xlsx og lag en oversikt med grafer.»</p></div></label></li>
+          <li class="task"><label><input type="checkbox" data-key="ov5"><div><b>Ditt eget oppsett</b> <span class="skill">CLAUDE.md og regler</span><p>Kjør <code>/init</code> i prosjektet fra oppgave 3 eller 4, rett CLAUDE.md, start en ny økt og se at Claude følger den. Legg til en regel med <code>/permissions</code>.</p></div></label></li>
+          <li class="task"><label><input type="checkbox" data-key="ov6"><div><b>Ditt eget verktøy</b> <span class="skill">Skills</span><p>Lag et lite skript for noe du gjør ofte. Be Claude lage en skill av det, skriv <code>/clear</code> og test skillen i en ny samtale.</p><p class="ex">«Lag en skill av det vi nettopp gjorde.»</p></div></label></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section class="part" id="del-7" aria-labelledby="h1-7">
+      <h2 id="h1-7"><span class="n">7</span>Jukselapp</h2>
+      <p class="lead">Skriv <code>/</code> i Claude Code for å se alle kommandoene. Disse bruker du mest.</p>
+      <figure class="film">
+        <div class="frame"><video controls preload="metadata" playsinline width="1920" height="1080" poster="assets/poster/07.jpg" aria-label="Video: Jukselapp"><source src="assets/video/07-jukselapp.mp4" type="video/mp4"></video></div>
+        <figcaption>Video, 0:48</figcaption>
+      </figure>
+      <div class="block sheet">
+        <section aria-labelledby="ark-1">
+          <h3 id="ark-1">Taster</h3>
+          <dl>
+            <div><dt><kbd>Shift</kbd><kbd>Tab</kbd></dt><dd>Bytt modus: auto, Manuell, acceptEdits, plan</dd></div>
+            <div><dt><kbd>Esc</kbd></dt><dd>Stopp Claude midt i en handling</dd></div>
+            <div><dt><kbd>Esc</kbd><kbd>Esc</kbd></dt><dd>Spol filer og samtale tilbake</dd></div>
+            <div><dt><kbd>Shift</kbd><kbd>Enter</kbd></dt><dd>Ny linje i meldingen (eller <kbd>Ctrl</kbd><kbd>J</kbd>)</dd></div>
+            <div><dt><kbd>Alt</kbd><kbd>V</kbd></dt><dd>Lim inn et bilde</dd></div>
+            <div><dt><kbd>Ctrl</kbd><kbd>C</kbd></dt><dd>To ganger avslutter</dd></div>
+          </dl>
+        </section>
+        <section aria-labelledby="ark-2">
+          <h3 id="ark-2">Starte og peke</h3>
+          <dl>
+            <div><dt><code>claude</code></dt><dd>Start i mappen du står i</dd></div>
+            <div><dt><code>claude --continue</code></dt><dd>Fortsett forrige samtale</dd></div>
+            <div><dt><code>claude --resume</code></dt><dd>Velg en tidligere samtale</dd></div>
+            <div><dt><code>@fil</code></dt><dd>Pek på en fil</dd></div>
+            <div><dt><code>!kommando</code></dt><dd>Kjør en kommando selv, og Claude ser resultatet</dd></div>
+          </dl>
+        </section>
+        <section aria-labelledby="ark-3">
+          <h3 id="ark-3">Kommandoer</h3>
+          <dl>
+            <div><dt><code>/clear</code> <code>/compact</code></dt><dd>Blank samtale, eller kort den ned</dd></div>
+            <div><dt><code>/context</code> <code>/usage</code></dt><dd>Hva fyller samtalen, og forbruket</dd></div>
+            <div><dt><code>/plan</code> <code>/init</code></dt><dd>Planmodus, og lag CLAUDE.md</dd></div>
+            <div><dt><code>/memory</code> <code>/permissions</code></dt><dd>Minne og faste ja og nei</dd></div>
+            <div><dt><code>/model</code> <code>/effort</code></dt><dd>Modell og grundighet</dd></div>
+            <div><dt><code>/btw</code> <code>/rename</code></dt><dd>Sidespørsmål, og gi samtalen et navn</dd></div>
+            <div><dt><code>/doctor</code> <code>/help</code></dt><dd>Sjekk oppsettet, og hjelp</dd></div>
+          </dl>
+        </section>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="part" id="del-8" aria-labelledby="h1-8">
+      <h2 id="h1-8"><span class="n">8</span>Trygghet</h2>
+      <p class="lead">Claude Code kan endre og slette ekte filer på PC-en din. Med disse reglene får du alltid tilbake det som går galt.</p>
+      <figure class="film">
+        <div class="frame"><video controls preload="metadata" playsinline width="1920" height="1080" poster="assets/poster/08.jpg" aria-label="Video: Trygghet"><source src="assets/video/08-trygghet.mp4" type="video/mp4"></video></div>
+        <figcaption>Video, 1:03</figcaption>
+      </figure>
+      <div class="block">
+        <ol class="rules">
+          <li><div><b>Start alltid i en prosjektmappe.</b> Aldri i <code>C:\</code> eller rett i brukermappen, for da kan Claude nå alle filene dine.</div></li>
+          <li><div><b>Lagre versjoner med git.</b> Si «sett opp git i denne mappen og lagre en versjon før du endrer noe». Da kan du angre alt, også det tilbakespolingen ikke dekker.</div></li>
+          <li><div><b>Les før du godkjenner,</b> særlig når Claude vil slette, flytte mange filer eller sende noe ut på nettet.</div></li>
+          <li><div><b>Hold sensitive ting utenfor.</b> Ikke lim inn passord eller koder, og ikke la Claude lese mapper med bank-, helse- eller ID-dokumenter.</div></li>
+          <li><div><b>Vær skeptisk til plutselige kursendringer.</b> Nettsider og filer Claude leser, kan inneholde skjulte instrukser. Vil Claude gjøre noe du ikke ba om, trykker du <kbd>Esc</kbd> og spør hvorfor.</div></li>
+          <li><div><b>Ikke slå av sikkerheten.</b> Valget <code>--dangerously-skip-permissions</code> er bare for isolerte testmaskiner, aldri for din egen PC.</div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section class="part" id="videoer" aria-labelledby="h1-9">
+      <h2 id="h1-9"><span class="n">9</span>Videoer på YouTube</h2>
+      <p class="lead">De ni videoene tar rundt 40 minutter til sammen og følger guiden fra del 1 til del 6. Alle er på engelsk. Norsk tekst får du ved å klikke på tannhjulet i YouTube og velge Undertekster, Automatisk oversett og Norsk.</p>
+      <div class="block">
+        <ol class="vids">
+          <li><a class="vid" href="https://www.youtube.com/watch?v=fl1DSmwQKKY"><span class="thumb"><img src="https://i.ytimg.com/vi/fl1DSmwQKKY/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="len">2:55</span></span><span><span class="t"><span class="o">1</span>What is Claude Code?</span><span class="by">Claude (offisiell)</span><p>Hva Claude Code er, hvordan det skiller seg fra vanlige Claude, og hva det vil si å jobbe med en agent.</p><span class="fit">Passer med del 1</span></span></a></li>
+          <li><a class="vid" href="https://www.youtube.com/watch?v=inxAjCRHe2o"><span class="thumb"><img src="https://i.ytimg.com/vi/inxAjCRHe2o/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="len">9:35</span></span><span><span class="t"><span class="o">2</span>Claude Code Tutorial for Non-Coders</span><span class="by">Kevin Stratvert</span><p>En ekte app blir bygget med vanlig språk, uten at man skriver kode selv.</p><span class="fit">Passer med del 1</span></span></a></li>
+          <li><a class="vid" href="https://www.youtube.com/watch?v=14I2dIOzCqU"><span class="thumb"><img src="https://i.ytimg.com/vi/14I2dIOzCqU/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="len">6:05</span></span><span><span class="t"><span class="o">3</span>How to Install Claude Code on Windows for Beginners from Scratch</span><span class="by">Devtamin</span><p>Git for Windows, installasjon i PowerShell, innlogging og første prosjekt.</p><span class="fit">Passer med del 2</span></span></a></li>
+          <li><a class="vid" href="https://www.youtube.com/watch?v=b8SV4U6fEIc"><span class="thumb"><img src="https://i.ytimg.com/vi/b8SV4U6fEIc/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="len">5:42</span></span><span><span class="t"><span class="o">4</span>How auto mode works with Claude Code</span><span class="by">Claude</span><p>Hvordan auto-modus lar en egen kontrollmodell godkjenne handlinger, og hvordan du stiller den inn.</p><span class="fit">Passer med del 3</span></span></a></li>
+          <li><a class="vid" href="https://www.youtube.com/watch?v=O0FGCxkHM-U"><span class="thumb"><img src="https://i.ytimg.com/vi/O0FGCxkHM-U/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="len">3:01</span></span><span><span class="t"><span class="o">5</span>The CLAUDE.md file</span><span class="by">Claude</span><p>Hva som hører hjemme i CLAUDE.md, og hvordan filene i ulike mapper henger sammen.</p><span class="fit">Passer med del 4</span></span></a></li>
+          <li><a class="vid" href="https://www.youtube.com/watch?v=xJQuF02NAK8"><span class="thumb"><img src="https://i.ytimg.com/vi/xJQuF02NAK8/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="len">3:11</span></span><span><span class="t"><span class="o">6</span>The Explore, Plan, Code, Commit workflow</span><span class="by">Claude</span><p>La Claude undersøke og planlegge før den endrer noe, og si på forhånd hva som er «ferdig».</p><span class="fit">Passer med del 4 og 5</span></span></a></li>
+          <li><a class="vid" href="https://www.youtube.com/watch?v=mQZB0l-rhxE"><span class="thumb"><img src="https://i.ytimg.com/vi/mQZB0l-rhxE/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="len">3:08</span></span><span><span class="t"><span class="o">7</span>Building verification loops in Claude Code</span><span class="by">Claude</span><p>Gi Claude måter å sjekke sitt eget arbeid på, så du slipper mange runder med rettelser.</p><span class="fit">Passer med del 5</span></span></a></li>
+          <li><a class="vid" href="https://www.youtube.com/watch?v=bjdBVZa66oU"><span class="thumb"><img src="https://i.ytimg.com/vi/bjdBVZa66oU/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="len">2:54</span></span><span><span class="t"><span class="o">8</span>What are skills?</span><span class="by">Claude</span><p>Hvordan en skill lærer Claude en oppgave én gang, slik at den brukes av seg selv senere.</p><span class="fit">Passer med del 4 og øving 6</span></span></a></li>
+          <li><a class="vid" href="https://www.youtube.com/watch?v=kkBFmwkDzdo"><span class="thumb"><img src="https://i.ytimg.com/vi/kkBFmwkDzdo/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="len">3:37</span></span><span><span class="t"><span class="o">9</span>MCP in Claude Code</span><span class="by">Claude</span><p>Hvordan Claude kobles til andre tjenester og datakilder. Eksemplene er utviklerverktøy, men prinsippet er det samme.</p><span class="fit">Passer med del 4</span></span></a></li>
+        </ol>
+        <ul class="more">
+          <li><a href="https://www.youtube.com/watch?v=S-sYlFiGFv8">How the Claude Code team uses Claude Code</a> (Claude, 22 min) viser hvordan teamet bak verktøyet jobber med det til daglig.</li>
+          <li><a href="https://www.youtube.com/watch?v=gh2_PhgZGsM">Claude Code for Beginners Tutorial</a> (freeCodeCamp, 4,5 timer) er et fullt kurs, mest rettet mot programmering.</li>
+          <li>De korte offisielle videoene hører til gratiskursene på <a href="https://claude.com/resources/courses">claude.com/resources/courses</a>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="part" id="kilder" aria-labelledby="h1-k">
+      <h2 id="h1-k">Kilder</h2>
+      <p class="lead">Alt er sjekket mot den offisielle dokumentasjonen 30. oktober 2026, for Claude Code versjon 2.1. Claude Code endrer seg raskt, så er du i tvil, spør du Claude.</p>
+      <div class="block">
+        <ul class="sources">
+          <li><a href="https://code.claude.com/docs/en/setup">Installasjon og systemkrav</a></li>
+          <li><a href="https://code.claude.com/docs/en/interactive-mode">Taster og arbeidsmoduser</a></li>
+          <li><a href="https://code.claude.com/docs/en/commands">Kommandoer</a></li>
+          <li><a href="https://code.claude.com/docs/en/memory">CLAUDE.md og auto-minne</a></li>
+          <li><a href="https://code.claude.com/docs/en/permission-modes">Tillatelsesmoduser</a></li>
+          <li><a href="https://code.claude.com/docs/en/best-practices">Beste praksis</a></li>
+        </ul>
+      </div>
+    </section>
+  </article>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Christoffer's Claude guide</span>
+    <span>Uoffisiell guide, ikke laget av eller tilknyttet Anthropic.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  function store(k, v){ try { if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} }
+  function read(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+  // Tema: følger systemet til du velger selv.
+  var btn = document.getElementById("theme");
+  function isDark(){ return root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; }
+  function paint(){ var d = isDark(); btn.innerHTML = '<i class="ph ' + (d ? "ph-sun" : "ph-moon") + '" aria-hidden="true"></i>'; btn.setAttribute("aria-label", d ? "Bytt til lyst tema" : "Bytt til mørkt tema"); }
+  btn.addEventListener("click", function(){ var next = isDark() ? "light" : "dark"; root.dataset.theme = next; store("ccg-theme", next); paint(); });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paint);
+  paint();
+
+  // Kantlinje under toppen når siden er rullet.
+  var top = document.getElementById("top"), sentinel = document.createElement("div");
+  sentinel.style.cssText = "position:absolute;top:0;height:1px;width:1px";
+  document.body.prepend(sentinel);
+  new IntersectionObserver(function(e){ top.classList.toggle("scrolled", !e[0].isIntersecting); }).observe(sentinel);
+
+  // Kopier-knapper.
+  document.querySelectorAll(".copy").forEach(function(b){
+    var label = b.querySelector("span"), icon = b.querySelector("i"), timer;
+    b.setAttribute("aria-label", "Kopier kommandoen");
+    b.addEventListener("click", function(){
+      var text = b.parentElement.querySelector("code").innerText;
+      var ok = function(){ b.classList.remove("fail"); b.classList.add("done"); icon.className = "ph ph-check"; label.textContent = "Kopiert"; };
+      var bad = function(){ b.classList.add("fail"); label.textContent = "Marker og kopier"; };
+      (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(ok, bad);
+      clearTimeout(timer);
+      timer = setTimeout(function(){ b.classList.remove("done","fail"); icon.className = "ph ph-copy"; label.textContent = "Kopier"; }, 1800);
+    });
+  });
+
+  // Øvinger: avkrysning huskes i denne nettleseren.
+  var boxes = Array.prototype.slice.call(document.querySelectorAll(".task input"));
+  var text = document.getElementById("prog-text"), bar = document.getElementById("prog-bar");
+  function progress(){ var n = boxes.filter(function(b){ return b.checked; }).length; text.textContent = n + " av " + boxes.length + " ferdig"; bar.style.width = (n / boxes.length * 100) + "%"; }
+  boxes.forEach(function(b){ b.checked = read("ccg-" + b.dataset.key) === "1"; b.addEventListener("change", function(){ store("ccg-" + b.dataset.key, b.checked ? "1" : null); progress(); }); });
+  progress();
+
+  // Innholdsmeny: marker delen du leser.
+  var links = {};
+  document.querySelectorAll(".toc a").forEach(function(a){ links[a.getAttribute("href").slice(1)] = a; });
+  var current = null;
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting) current = e.target.id; });
+    Object.keys(links).forEach(function(id){ if (id === current) links[id].setAttribute("aria-current", "true"); else links[id].removeAttribute("aria-current"); });
+  }, { rootMargin: "-30% 0px -60% 0px" });
+  document.querySelectorAll(".part[id]").forEach(function(s){ if (links[s.id]) spy.observe(s); });
+
+  // Lukk mobilmenyen etter valg.
+  document.querySelectorAll(".toc-mobile a").forEach(function(a){ a.addEventListener("click", function(){ a.closest("details").open = false; }); });
+
+  // Bare én video spiller om gangen.
+  var vids = Array.prototype.slice.call(document.querySelectorAll("video"));
+  vids.forEach(function(v){ v.addEventListener("play", function(){ vids.forEach(function(o){ if (o !== v) o.pause(); }); }); });
+})();
+</script>
+</body>
+</html>
